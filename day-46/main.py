@@ -8,13 +8,13 @@ from spotify_interface import SpotifyInterface
 # Define logger
 def get_logger():
     log = logging.getLogger("Billboard Spotify Playlist Maker")
+    log.setLevel(logging.INFO)
 
-    # Add timestamps to logs
-    ch = logging.StreamHandler()
-    ch.setLevel(logging.INFO)
-    fmt = logging.Formatter()
-    ch.setFormatter(fmt)
-    log.addHandler(ch)
+    # Add timestamps to logs in console
+    handler = logging.StreamHandler(sys.stdout)
+    fmt = logging.Formatter('%(asctime)s [%(levelname)s] %(message)s')
+    handler.setFormatter(fmt)
+    log.addHandler(handler)
 
     return log
 
